@@ -1,11 +1,37 @@
 "use client";
-import { BarChart, Book, Clock } from "lucide-react";
-import React from "react";
+import { BarChart, Book, Clock, Loader2Icon, Settings } from "lucide-react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { PlayCircle } from "lucide-react";
 
-function CourseInfo({ course }) {
+function CourseInfo({ course, viewCourse }) {
   const courseLayout = course?.courseJson?.course;
+  const [loading, setLoading] = useState(false);
+  const router=useRouter();
+  const GenerateCourseContent = async ()=>{
+    // call api to generate content
+    setLoading(true)
+    try{
+    const result = await axios.post('/api/generate-course-content',{
+      courseJson: courseLayout,
+      courseTitle: course?.name,
+      courseId: course?.cid
+    });
+    console.log(result.data);
+    setLoading(false);
+    router.replace('/workspace');
+    toast.success('Course Generated Successfully!')
+    }
+    catch(e){
+      console.log(e);
+      setLoading(false);
+      toast.error("Server Side Error, Try Again!")
+    }
+  }
   return (
     <div className="md:flex gap-5 justify-between p-5 rounded-2xl shadow">
       <div className="flex flex-col gap-3">
@@ -37,7 +63,9 @@ function CourseInfo({ course }) {
           </div>
         </div>
 
-        <Button>Generate Content</Button>
+        {!viewCourse && !course?.courseContent?.length?(
+          <Button className={'max-w-sm'} onClick={GenerateCourseContent} disabled={loading}>{loading ? <Loader2Icon className='animate-spin' /> :  <Settings />} Generate Content</Button>)
+        :<Button><PlayCircle/>Continue Learning</Button>}
 
       </div>
       {course?.bannerImageUrl && (
