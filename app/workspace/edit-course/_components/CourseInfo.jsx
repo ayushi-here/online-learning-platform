@@ -7,6 +7,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { PlayCircle } from "lucide-react";
+import Link from "next/link";
 
 function CourseInfo({ course, viewCourse }) {
   const courseLayout = course?.courseJson?.course;
@@ -65,7 +66,7 @@ function CourseInfo({ course, viewCourse }) {
 
         {!viewCourse && !course?.courseContent?.length?(
           <Button className={'max-w-sm'} onClick={GenerateCourseContent} disabled={loading}>{loading ? <Loader2Icon className='animate-spin' /> :  <Settings />} Generate Content</Button>)
-        :<Button><PlayCircle/>Continue Learning</Button>}
+        :<Link href={'/course/'+course?.cid}><Button><PlayCircle/>Continue Learning</Button></Link>}
 
       </div>
       {course?.bannerImageUrl && (
