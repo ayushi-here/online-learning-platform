@@ -10,6 +10,15 @@ export async function GET(req) {
   const courseId = searchParams?.get('courseId');
   const user = await currentUser();
 
+  if (courseId == 0) {
+    const result = await db.select().from(coursesTable)
+      .where(sql`${coursesTable.courseContent}::jsonb != '{}'::jsonb`);
+
+    console.log(result);
+
+    return NextResponse.json(result[0]);
+  }
+
   if(courseId){
     const result = await db.select().from(coursesTable)
       .where(eq(coursesTable.cid, courseId));

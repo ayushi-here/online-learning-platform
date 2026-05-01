@@ -53,7 +53,12 @@ function AddNewCourseDialog({ children }) {
       ...formData,
       courseId: courseId
     });
-    console.log(result.data);
+    
+    if (result.data.resp == 'limit exceed') {
+      toast.warning('Please subscribe to plan!')
+      router.push('/workspace/billing');
+    }
+
     setLoading(false);
     router.push('/workspace/edit-course/' + result.data?.courseId);
   }catch(e){

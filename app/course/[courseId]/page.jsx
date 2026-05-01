@@ -16,6 +16,7 @@ function Course() {
   }, []);
 
   const GetEnrolledCourseById = async () => {
+    if (!courseId || courseId.includes('.')) return;
     const result = await axios.get(
       "/api/enroll-course?courseId=" + courseId
     );
@@ -29,7 +30,7 @@ function Course() {
 
       <div className="flex gap-10">
         <ChaptersListSidebar courseInfo={courseInfo}/>
-        <ChapterContent courseInfo={courseInfo}/>
+        <ChapterContent courseInfo={courseInfo} refreshData={GetEnrolledCourseById} />
       </div>
     </div>
   );

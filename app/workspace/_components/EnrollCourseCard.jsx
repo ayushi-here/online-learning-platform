@@ -9,8 +9,11 @@ function EnrollCourseCard({course, enrollCourse}) {
     const courseJson = course?.courseJson?.course;
 
     const CalculatePerProgress = () => {
-        return (enrollCourse?.completedChapters?.length??0/course?.courseContent?.length)* 100;
-    }
+    const completed = enrollCourse?.completedChapters?.length ?? 0;
+    const total = course?.courseContent?.length ?? 1;
+
+    return Math.min(Math.round((completed / total) * 100), 100);
+  };
 
   return (
     <div className="shadow rounded-xl">
