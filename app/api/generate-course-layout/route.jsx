@@ -1,6 +1,6 @@
 import { db } from '@/config/db';
 import { coursesTable } from '@/config/schema';
-import { currentUser } from '@clerk/nextjs/server';
+// import { currentUser } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
 import axios from 'axios';
