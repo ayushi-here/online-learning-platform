@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react"; 
 import { Skeleton } from "@/components/ui/skeleton"
+import CourseCard from "../_components/CourseCard";
 
 function Explore() {
   const [courseList, setCourseList] = useState([]);

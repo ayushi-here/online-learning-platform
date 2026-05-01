@@ -1,7 +1,13 @@
+import Header from "./_components/Header";
+import Hero from "./_components/Hero";
+
 export default function Home() {
   return (
     <div>
-      <h1>hello world</h1>
+      {/* Header */}
+      <Header />
+      {/* Hero */}
+      <Hero />
     </div>
   );
 }

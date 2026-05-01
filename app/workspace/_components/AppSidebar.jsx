@@ -41,11 +41,11 @@ const SideBarOptions = [
     icon: Compass,
     path: "/workspace/explore",
   },
-  {
-    title: "AI Tools",
-    icon: PencilRulerIcon,
-    path: "/workspace/ai-tools",
-  },
+  // {
+  //   title: "AI Tools",
+  //   icon: PencilRulerIcon,
+  //   path: "/workspace/ai-tools",
+  // },
   {
     title: "Billing",
     icon: WalletCards,
@@ -62,8 +62,11 @@ function AppSidebar() {
   const path = usePathname();
   return (
     <Sidebar>
-      <SidebarHeader className={"p-4"}>
-        <Image src={"/logo.svg"} alt="Logo" width={130} height={120} />
+      <SidebarHeader className="p-4">
+        <div className="flex items-center gap-2">
+          <Image src={"/logo.svg"} alt="Logo" width={30} height={30} />
+          <h2 className="font-bold text-2xl">CourseCraft</h2>
+        </div>
       </SidebarHeader>
 
       <SidebarContent>

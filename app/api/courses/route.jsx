@@ -17,7 +17,7 @@ export async function GET(req) {
 
     console.log(result);
 
-    return NextResponse.json(result[0]);
+    return NextResponse.json(result);
   }
 
   if(courseId){
