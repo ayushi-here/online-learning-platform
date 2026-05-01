@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { currentUser } from '@clerk/nextjs/server';
 import { desc } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
