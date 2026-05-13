@@ -64,8 +64,8 @@ function AppSidebar() {
     <Sidebar>
       <SidebarHeader className="p-4">
         <div className="flex items-center gap-2">
-          <Image src={"/logo.svg"} alt="Logo" width={30} height={30} />
-          <h2 className="font-bold text-2xl">CourseCraft</h2>
+          <Link href="/" className="flex items-center gap-2"><Image src={"/logo.svg"} alt="Logo" width={30} height={30} />
+          <h2 className="font-bold text-2xl">CourseCraft</h2></Link>
         </div>
       </SidebarHeader>
 
